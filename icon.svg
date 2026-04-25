@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="clipBack"><circle cx="44" cy="48" r="36"/></clipPath>
+    <clipPath id="clipFront"><circle cx="84" cy="80" r="40"/></clipPath>
+  </defs>
+
+  <!-- back identity: blue avatar -->
+  <circle cx="44" cy="48" r="36" fill="#3b82f6"/>
+  <g clip-path="url(#clipBack)" fill="#ffffff">
+    <circle cx="44" cy="40" r="11"/>
+    <ellipse cx="44" cy="78" rx="21" ry="18"/>
+  </g>
+
+  <!-- separator ring so the two circles read clearly on any background -->
+  <circle cx="84" cy="80" r="44" fill="#ffffff"/>
+
+  <!-- front identity: red avatar -->
+  <circle cx="84" cy="80" r="40" fill="#ef4444"/>
+  <g clip-path="url(#clipFront)" fill="#ffffff">
+    <circle cx="84" cy="72" r="12"/>
+    <ellipse cx="84" cy="116" rx="24" ry="20"/>
+  </g>
+</svg>
