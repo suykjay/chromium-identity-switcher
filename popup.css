@@ -24,6 +24,12 @@ header {
   border-bottom: 1px solid var(--border);
 }
 
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .title {
   font-weight: 600;
   font-size: 13px;
@@ -203,4 +209,11 @@ button.primary:hover { filter: brightness(1.1); }
   color: var(--muted);
   font-size: 12px;
   margin: 0 0 8px;
+}
+
+.toast {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--danger);
 }

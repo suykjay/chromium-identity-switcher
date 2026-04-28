@@ -18,6 +18,24 @@ function ensureSite(state, site) {
   return state.sites[site];
 }
 
+// ---------- site key helper ----------
+const COMPOUND_TLDS = new Set([
+  'co.uk','com.cn','com.hk','com.tw','com.au','co.jp','co.kr',
+  'com.br','org.uk','ac.uk','ne.jp','or.jp','com.sg','com.my',
+  'co.in','co.nz','co.za',
+]);
+
+function getSiteKey(hostname) {
+  if (!hostname) return '';
+  hostname = hostname.replace(/^www\./, '');
+  if (/^\d+\.\d+\.\d+\.\d+$/.test(hostname)) return hostname;
+  const parts = hostname.split('.');
+  if (parts.length <= 2) return hostname;
+  const last2 = parts.slice(-2).join('.');
+  if (COMPOUND_TLDS.has(last2)) return parts.slice(-3).join('.');
+  return last2;
+}
+
 // ---------- cookie helpers ----------
 async function getCookiesForSite(site) {
   try {
@@ -189,23 +207,70 @@ async function renameIdentity({ site, id, name, color }) {
 }
 
 // ---------- messaging ----------
+const BADGE_OPS = new Set(['createIdentity','switchIdentity','deleteIdentity','renameIdentity']);
+
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   (async () => {
     try {
+      let result;
       switch (msg?.type) {
-        case 'listSite':       return sendResponse({ ok: true, data: await listSite(msg.site) });
-        case 'createIdentity': return sendResponse({ ok: true, data: await createIdentity(msg) });
-        case 'switchIdentity': return sendResponse({ ok: true, data: await switchIdentity(msg) });
-        case 'deleteIdentity': return sendResponse({ ok: true, data: await deleteIdentity(msg) });
-        case 'renameIdentity': return sendResponse({ ok: true, data: await renameIdentity(msg) });
+        case 'listSite':       result = await listSite(msg.site); break;
+        case 'createIdentity': result = await createIdentity(msg); break;
+        case 'switchIdentity': result = await switchIdentity(msg); break;
+        case 'deleteIdentity': result = await deleteIdentity(msg); break;
+        case 'renameIdentity': result = await renameIdentity(msg); break;
+        case 'clearAllData':   await chrome.storage.local.remove([SK, JK]); result = { success: true }; break;
         default:               return sendResponse({ ok: false, error: 'unknown message type' });
       }
+      sendResponse({ ok: true, data: result });
+      if (BADGE_OPS.has(msg.type)) updateBadgeForSite(msg.site);
+      if (msg.type === 'clearAllData') updateAllBadges();
     } catch (e) {
       console.error(e);
       sendResponse({ ok: false, error: String(e && e.message || e) });
     }
   })();
   return true; // keep channel open for async response
+});
+
+// ---------- badge ----------
+async function updateBadgeForTab(tabId) {
+  try {
+    const tab = await chrome.tabs.get(tabId);
+    if (!tab.url) { await chrome.action.setBadgeText({ tabId, text: '' }); return; }
+    let url;
+    try { url = new URL(tab.url); } catch { await chrome.action.setBadgeText({ tabId, text: '' }); return; }
+    if (!/^https?:$/.test(url.protocol)) { await chrome.action.setBadgeText({ tabId, text: '' }); return; }
+    const site = getSiteKey(url.hostname);
+    const state = await getState();
+    const s = state.sites[site];
+    if (!s || !s.activeId) { await chrome.action.setBadgeText({ tabId, text: '' }); return; }
+    const identity = s.identities.find(i => i.id === s.activeId);
+    if (!identity) { await chrome.action.setBadgeText({ tabId, text: '' }); return; }
+    await chrome.action.setBadgeText({ tabId, text: identity.name.slice(0, 4) });
+    await chrome.action.setBadgeBackgroundColor({ tabId, color: identity.color || '#888' });
+  } catch { /* tab may have been closed */ }
+}
+
+async function updateBadgeForSite(site) {
+  const tabs = await chrome.tabs.query({});
+  for (const tab of tabs) {
+    try {
+      if (!tab.url) continue;
+      const url = new URL(tab.url);
+      if (getSiteKey(url.hostname) === site) updateBadgeForTab(tab.id);
+    } catch {}
+  }
+}
+
+async function updateAllBadges() {
+  const tabs = await chrome.tabs.query({});
+  for (const tab of tabs) updateBadgeForTab(tab.id);
+}
+
+chrome.tabs.onActivated.addListener(({ tabId }) => updateBadgeForTab(tabId));
+chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+  if (changeInfo.url || changeInfo.status === 'complete') updateBadgeForTab(tabId);
 });
 
 // Cleanup jars for sites with no identities (rare, but keep storage tidy)
@@ -221,4 +286,5 @@ chrome.runtime.onStartup.addListener(async () => {
     }
   }
   if (dirty) await setState(state);
+  updateAllBadges();
 });

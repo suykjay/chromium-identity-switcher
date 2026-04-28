@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Identity Switcher - 设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Identity Switcher</h1>
+    <p class="subtitle">设置</p>
+
+    <section>
+      <h2>数据管理</h2>
+      <div class="setting-item">
+        <div>
+          <div class="setting-label">清除所有数据</div>
+          <div class="setting-desc">删除所有站点的身份和已保存的 cookie 数据。此操作不可撤销。</div>
+        </div>
+        <button id="btn-clear-all" class="danger">清除</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>关于</h2>
+      <div class="setting-item">
+        <div>
+          <div class="setting-label">版本</div>
+          <div class="setting-desc" id="version"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

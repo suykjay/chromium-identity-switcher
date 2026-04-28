@@ -277,4 +277,5 @@ function escapeHtml(s) {
   }[ch]));
 }
 
+document.getElementById('btn-settings').onclick = () => chrome.runtime.openOptionsPage();
 init();
