@@ -1,16 +1,17 @@
 // Identity Switcher — background service worker (MV3)
 
 const SK = 'sites';
-const JK = 'jars';
+const MK = 'jarMeta';
+const VAULT_BASE = 'isw-vault.invalid';
 
 // ---------- storage helpers ----------
 async function getState() {
-  const data = await chrome.storage.local.get([SK, JK]);
-  return { sites: data[SK] || {}, jars: data[JK] || {} };
+  const data = await chrome.storage.local.get([SK, MK]);
+  return { sites: data[SK] || {}, jarMeta: data[MK] || {} };
 }
 
 async function setState(state) {
-  await chrome.storage.local.set({ [SK]: state.sites, [JK]: state.jars });
+  await chrome.storage.local.set({ [SK]: state.sites, [MK]: state.jarMeta });
 }
 
 function ensureSite(state, site) {
@@ -34,6 +35,83 @@ function getSiteKey(hostname) {
   const last2 = parts.slice(-2).join('.');
   if (COMPOUND_TLDS.has(last2)) return parts.slice(-3).join('.');
   return last2;
+}
+
+// ---------- vault helpers ----------
+function vaultDomain(site) {
+  return site.replace(/\./g, '-') + '.' + VAULT_BASE;
+}
+
+function vaultUrl(site) {
+  return `http://${vaultDomain(site)}/`;
+}
+
+async function parkCookies(site, identityId, cookies) {
+  const url = vaultUrl(site);
+  const meta = [];
+  for (let i = 0; i < cookies.length; i++) {
+    const c = cookies[i];
+    const vaultName = `${identityId}__${i}`;
+    try {
+      await chrome.cookies.set({
+        url,
+        name: vaultName,
+        value: c.value,
+        expirationDate: c.expirationDate || (Date.now() / 1000 + 365 * 24 * 3600),
+      });
+    } catch (e) {
+      console.warn('vault park failed', vaultName, e);
+      continue;
+    }
+    meta.push({
+      name: c.name,
+      domain: c.domain,
+      path: c.path,
+      secure: c.secure,
+      httpOnly: c.httpOnly,
+      sameSite: c.sameSite,
+      hostOnly: c.hostOnly,
+      session: c.session,
+      expirationDate: c.expirationDate,
+      storeId: c.storeId,
+      vaultName,
+    });
+  }
+  return meta;
+}
+
+async function unparkCookies(site, meta) {
+  const url = vaultUrl(site);
+  for (const m of meta) {
+    try {
+      const vc = await chrome.cookies.get({ url, name: m.vaultName });
+      if (!vc) continue;
+      const details = {
+        url: cookieUrl(m),
+        name: m.name,
+        value: vc.value,
+        path: m.path,
+        secure: m.secure,
+        httpOnly: m.httpOnly,
+        sameSite: m.sameSite,
+        storeId: m.storeId,
+      };
+      if (!m.hostOnly) details.domain = m.domain;
+      if (!m.session && m.expirationDate) details.expirationDate = m.expirationDate;
+      await chrome.cookies.set(details);
+      await chrome.cookies.remove({ url, name: m.vaultName });
+    } catch (e) {
+      console.warn('vault unpark failed', m.vaultName, e);
+    }
+  }
+}
+
+async function clearVaultCookies(site, meta) {
+  if (!meta || !meta.length) return;
+  const url = vaultUrl(site);
+  for (const m of meta) {
+    try { await chrome.cookies.remove({ url, name: m.vaultName }); } catch {}
+  }
 }
 
 // ---------- cookie helpers ----------
@@ -60,28 +138,6 @@ async function clearSiteCookies(site) {
       storeId: c.storeId,
     }).catch(() => {})
   ));
-}
-
-async function restoreJar(jar) {
-  for (const c of jar) {
-    const details = {
-      url: cookieUrl(c),
-      name: c.name,
-      value: c.value,
-      path: c.path,
-      secure: c.secure,
-      httpOnly: c.httpOnly,
-      sameSite: c.sameSite,
-      storeId: c.storeId,
-    };
-    if (!c.hostOnly) details.domain = c.domain;
-    if (!c.session && c.expirationDate) details.expirationDate = c.expirationDate;
-    try {
-      await chrome.cookies.set(details);
-    } catch (e) {
-      console.warn('cookies.set failed', c.name, e);
-    }
-  }
 }
 
 // ---------- actions ----------
@@ -125,11 +181,11 @@ function uniquifyName(name, identities) {
 }
 
 // Always-safe create: current cookie state is never silently discarded.
-// - If there is an active identity, current cookies are first saved into
-//   its jar (normal case).
-// - If there is no active identity but the browser has cookies for this
-//   site, an implicit identity is auto-created to hold them so the user
-//   does not lose any existing login.
+// - If there is an active identity, current cookies are first parked
+//   into the vault on a .invalid domain (normal case).
+// - If there is no active identity but the browser currently has
+//   cookies for this site, an implicit identity is auto-created to
+//   hold them so the user does not lose any existing login.
 // Then a fresh, blank identity is created and becomes active; the
 // browser's cookie store is cleared so the caller can reload the tab
 // and log in with a new account.
@@ -140,7 +196,7 @@ async function createIdentity({ site, name, color }) {
   const currentCookies = await getCookiesForSite(site);
 
   if (s.activeId) {
-    state.jars[`${site}::${s.activeId}`] = currentCookies;
+    state.jarMeta[`${site}::${s.activeId}`] = await parkCookies(site, s.activeId, currentCookies);
   } else if (currentCookies.length > 0) {
     const implicitId = crypto.randomUUID();
     s.identities.push({
@@ -149,13 +205,13 @@ async function createIdentity({ site, name, color }) {
       color: PALETTE[s.identities.length % PALETTE.length],
       createdAt: Date.now(),
     });
-    state.jars[`${site}::${implicitId}`] = currentCookies;
+    state.jarMeta[`${site}::${implicitId}`] = await parkCookies(site, implicitId, currentCookies);
   }
 
   const id = crypto.randomUUID();
   const identity = { id, name: uniquifyName(name, s.identities), color, createdAt: Date.now() };
   s.identities.push(identity);
-  state.jars[`${site}::${id}`] = [];
+  state.jarMeta[`${site}::${id}`] = [];
   s.activeId = id;
 
   await setState(state);
@@ -169,11 +225,16 @@ async function switchIdentity({ site, toId }) {
   if (s.activeId === toId) return { changed: false };
 
   if (s.activeId) {
-    state.jars[`${site}::${s.activeId}`] = await getCookiesForSite(site);
+    const currentCookies = await getCookiesForSite(site);
+    state.jarMeta[`${site}::${s.activeId}`] = await parkCookies(site, s.activeId, currentCookies);
   }
+
   await clearSiteCookies(site);
-  const jar = state.jars[`${site}::${toId}`] || [];
-  await restoreJar(jar);
+
+  const targetMeta = state.jarMeta[`${site}::${toId}`] || [];
+  await unparkCookies(site, targetMeta);
+  state.jarMeta[`${site}::${toId}`] = [];
+
   s.activeId = toId;
   await setState(state);
   return { changed: true };
@@ -183,8 +244,11 @@ async function deleteIdentity({ site, id }) {
   const state = await getState();
   const s = state.sites[site];
   if (!s) return { changed: false };
+
+  await clearVaultCookies(site, state.jarMeta[`${site}::${id}`] || []);
+  delete state.jarMeta[`${site}::${id}`];
+
   s.identities = s.identities.filter(i => i.id !== id);
-  delete state.jars[`${site}::${id}`];
   let wasActive = false;
   if (s.activeId === id) {
     s.activeId = null;
@@ -219,7 +283,16 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         case 'switchIdentity': result = await switchIdentity(msg); break;
         case 'deleteIdentity': result = await deleteIdentity(msg); break;
         case 'renameIdentity': result = await renameIdentity(msg); break;
-        case 'clearAllData':   await chrome.storage.local.remove([SK, JK]); result = { success: true }; break;
+        case 'clearAllData': {
+          const state = await getState();
+          for (const key of Object.keys(state.jarMeta)) {
+            const s = key.split('::')[0];
+            await clearVaultCookies(s, state.jarMeta[key]);
+          }
+          await chrome.storage.local.remove([SK, MK]);
+          result = { success: true };
+          break;
+        }
         default:               return sendResponse({ ok: false, error: 'unknown message type' });
       }
       sendResponse({ ok: true, data: result });
@@ -273,18 +346,39 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   if (changeInfo.url || changeInfo.status === 'complete') updateBadgeForTab(tabId);
 });
 
-// Cleanup jars for sites with no identities (rare, but keep storage tidy)
+// ---------- legacy migration ----------
+async function migrateFromLegacy() {
+  const data = await chrome.storage.local.get(['jars']);
+  if (!data.jars) return;
+  const state = await getState();
+  for (const key of Object.keys(data.jars)) {
+    if (state.jarMeta[key]) continue;
+    const cookies = data.jars[key];
+    const [site, id] = key.split('::');
+    state.jarMeta[key] = cookies.length > 0
+      ? await parkCookies(site, id, cookies)
+      : [];
+  }
+  await setState(state);
+  await chrome.storage.local.remove(['jars']);
+}
+
+// Cleanup jarMeta for sites with no identities (rare, but keep storage tidy)
 chrome.runtime.onStartup.addListener(async () => {
+  await migrateFromLegacy();
   const state = await getState();
   let dirty = false;
-  for (const key of Object.keys(state.jars)) {
+  for (const key of Object.keys(state.jarMeta)) {
     const [site, id] = key.split('::');
     const s = state.sites[site];
     if (!s || !s.identities.some(i => i.id === id)) {
-      delete state.jars[key];
+      await clearVaultCookies(site, state.jarMeta[key]);
+      delete state.jarMeta[key];
       dirty = true;
     }
   }
   if (dirty) await setState(state);
   updateAllBadges();
 });
+
+chrome.runtime.onInstalled.addListener(() => migrateFromLegacy());
