@@ -1,0 +1,246 @@
+{
+  "language": {
+    "message": "言語",
+    "description": "言語セクションタイトル"
+  },
+  "selectLanguage": {
+    "message": "言語を選択",
+    "description": "言語選択ラベル"
+  },
+  "selectLanguageDesc": {
+    "message": "表示言語を選択してください。",
+    "description": "言語選択説明"
+  },
+  "autoLanguage": {
+    "message": "自動（ブラウザ設定に従う）",
+    "description": "自動言語オプション"
+  },
+  "unknownError": {
+    "message": "不明なエラー",
+    "description": "不明なエラーメッセージ"
+  },
+  "extName": {
+    "message": "Identity Switcher",
+    "description": "拡張機能の名前"
+  },
+  "extDescription": {
+    "message": "サイトごとのマルチアカウント Cookie 切り替えツール",
+    "description": "拡張機能の説明"
+  },
+  "defaultTitle": {
+    "message": "Identity Switcher",
+    "description": "デフォルトのボタンタイトル"
+  },
+
+  "settings": {
+    "message": "設定",
+    "description": "設定ボタンのツールチップ"
+  },
+  "siteTitle": {
+    "message": "サイト",
+    "description": "ポップアップのサイトラベル"
+  },
+
+  "noActiveTab": {
+    "message": "アクティブなタブがありません",
+    "description": "アクティブなタブがない場合のエラー"
+  },
+  "invalidUrl": {
+    "message": "現在のページの URL を解析できません",
+    "description": "URL の解析に失敗した場合のエラー"
+  },
+  "unsupportedProtocol": {
+    "message": "http/https ページのみサポートしています",
+    "description": "サポートされていないプロトコルのエラー"
+  },
+  "permissionRequired": {
+    "message": "$SITE$ のアクセス権限を付与して cookie を管理してください。",
+    "description": "権限リクエストメッセージ",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  },
+  "grantPermission": {
+    "message": "権限を付与",
+    "description": "権限付与ボタン"
+  },
+
+  "noIdentities": {
+    "message": "このサイトに ID が作成されていません。",
+    "description": "ID がない場合のヒント"
+  },
+  "createIdentity": {
+    "message": "ID を作成",
+    "description": "ID 作成ボタン"
+  },
+  "newIdentity": {
+    "message": "+ 新規 ID",
+    "description": "新規 ID ボタン"
+  },
+
+  "switchToIdentity": {
+    "message": "この ID に切り替え",
+    "description": "切り替えボタンのツールチップ"
+  },
+  "rename": {
+    "message": "名前を変更",
+    "description": "名前変更ボタンのツールチップ"
+  },
+  "delete": {
+    "message": "削除",
+    "description": "削除ボタンのツールチップ"
+  },
+  "active": {
+    "message": "現在",
+    "description": "現在の ID バッジ"
+  },
+
+  "identityName": {
+    "message": "名前",
+    "description": "ID 名のラベル"
+  },
+  "color": {
+    "message": "色",
+    "description": "色のラベル"
+  },
+  "cancel": {
+    "message": "キャンセル",
+    "description": "キャンセルボタン"
+  },
+  "save": {
+    "message": "保存",
+    "description": "保存ボタン"
+  },
+  "create": {
+    "message": "作成",
+    "description": "作成ボタン"
+  },
+
+  "nameRequired": {
+    "message": "名前は必須です",
+    "description": "名前が空の場合のエラー"
+  },
+  "createFailed": {
+    "message": "作成に失敗しました",
+    "description": "作成エラーメッセージ"
+  },
+  "switchFailed": {
+    "message": "切り替えに失敗しました",
+    "description": "切り替えエラーメッセージ"
+  },
+  "deleteFailed": {
+    "message": "削除に失敗しました",
+    "description": "削除エラーメッセージ"
+  },
+  "readFailed": {
+    "message": "読み込みに失敗しました",
+    "description": "読み込みエラーメッセージ"
+  },
+
+  "autoCaptureHint": {
+    "message": "現在のログイン状態は自動的に保存されます。その後、ページは cookie をクリアして再読み込みし、新しいアカウントでログインできるようになります。",
+    "description": "自動 cookie キャプチャのヒント"
+  },
+
+  "deleteConfirmActive": {
+    "message": "現在のアクティブ ID \"$NAME$\" を削除しますか？このサイトの cookie がクリアされます。",
+    "description": "現在の ID 削除の確認",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "ID 1"
+      }
+    }
+  },
+  "deleteConfirm": {
+    "message": "ID \"$NAME$\" を削除しますか？",
+    "description": "ID 削除の確認",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "ID 1"
+      }
+    }
+  },
+  "confirm": {
+    "message": "確認",
+    "description": "確認ボタン"
+  },
+
+  "unnamed": {
+    "message": "（名前なし）",
+    "description": "名前なし ID のプレースホルダー"
+  },
+  "identityNamePattern": {
+    "message": "ID $N$",
+    "description": "自動生成 ID 名パターン",
+    "placeholders": {
+      "n": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "uniquifyNamePattern": {
+    "message": "$NAME$ ($N$)",
+    "description": "ユニーク名生成パターン",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "ID 1"
+      },
+      "n": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+
+  "dataManagement": {
+    "message": "データ管理",
+    "description": "データ管理セクションのタイトル"
+  },
+  "clearAllData": {
+    "message": "すべてのデータをクリア",
+    "description": "すべてのデータをクリアラベル"
+  },
+  "clearAllDataDesc": {
+    "message": "すべてのサイト ID と保存された cookie データを削除します。この操作は元に戻せません。",
+    "description": "すべてのデータをクリアの説明"
+  },
+  "clear": {
+    "message": "クリア",
+    "description": "クリアボタン"
+  },
+
+  "about": {
+    "message": "について",
+    "description": "についてセクションのタイトル"
+  },
+  "version": {
+    "message": "バージョン",
+    "description": "バージョンラベル"
+  },
+
+  "clearAllConfirm": {
+    "message": "すべての ID データをクリアしますか？この操作は元に戻せません。",
+    "description": "すべてのデータクリアの確認"
+  },
+  "clearAllSuccess": {
+    "message": "すべてのデータがクリアされました。",
+    "description": "クリア成功メッセージ"
+  },
+  "clearAllError": {
+    "message": "クリアに失敗しました：$ERROR$",
+    "description": "クリアエラーメッセージ",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "不明なエラー"
+      }
+    }
+  }
+}

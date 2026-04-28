@@ -1,0 +1,246 @@
+{
+  "language": {
+    "message": "언어",
+    "description": "언어 섹션 제목"
+  },
+  "selectLanguage": {
+    "message": "언어 선택",
+    "description": "언어 선택 레이블"
+  },
+  "selectLanguageDesc": {
+    "message": "원하는 표시 언어를 선택하세요.",
+    "description": "언어 선택 설명"
+  },
+  "autoLanguage": {
+    "message": "자동 (브라우저 설정 따름)",
+    "description": "자동 언어 옵션"
+  },
+  "unknownError": {
+    "message": "알 수 없는 오류",
+    "description": "알 수 없는 오류 메시지"
+  },
+  "extName": {
+    "message": "Identity Switcher",
+    "description": "확장 프로그램 이름"
+  },
+  "extDescription": {
+    "message": "사이트별 다중 계정 Cookie 신원 전환기",
+    "description": "확장 프로그램 설명"
+  },
+  "defaultTitle": {
+    "message": "Identity Switcher",
+    "description": "기본 버튼 제목"
+  },
+
+  "settings": {
+    "message": "설정",
+    "description": "설정 버튼 툴팁"
+  },
+  "siteTitle": {
+    "message": "사이트",
+    "description": "팝업의 사이트 레이블"
+  },
+
+  "noActiveTab": {
+    "message": "활성 탭이 없습니다",
+    "description": "활성 탭이 없을 때의 오류"
+  },
+  "invalidUrl": {
+    "message": "현재 페이지 URL을 파싱할 수 없습니다",
+    "description": "URL 파싱 실패 시 오류"
+  },
+  "unsupportedProtocol": {
+    "message": "http/https 페이지만 지원됩니다",
+    "description": "지원되지 않는 프로토콜 오류"
+  },
+  "permissionRequired": {
+    "message": "cookie를 관리하려면 $SITE$에 대한 액세스 권한을 부여해야 합니다.",
+    "description": "권한 요청 메시지",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  },
+  "grantPermission": {
+    "message": "권한 부여",
+    "description": "권한 부여 버튼"
+  },
+
+  "noIdentities": {
+    "message": "이 사이트에 대해 생성된 신원이 없습니다.",
+    "description": "신원이 없을 때의 힌트"
+  },
+  "createIdentity": {
+    "message": "신원 생성",
+    "description": "신원 생성 버튼"
+  },
+  "newIdentity": {
+    "message": "+ 새 신원",
+    "description": "새 신원 버튼"
+  },
+
+  "switchToIdentity": {
+    "message": "이 신원으로 전환",
+    "description": "전환 버튼 툴팁"
+  },
+  "rename": {
+    "message": "이름 변경",
+    "description": "이름 변경 버튼 툴팁"
+  },
+  "delete": {
+    "message": "삭제",
+    "description": "삭제 버튼 툴팁"
+  },
+  "active": {
+    "message": "현재",
+    "description": "현재 신원 배지"
+  },
+
+  "identityName": {
+    "message": "이름",
+    "description": "신원 이름 레이블"
+  },
+  "color": {
+    "message": "색상",
+    "description": "색상 레이블"
+  },
+  "cancel": {
+    "message": "취소",
+    "description": "취소 버튼"
+  },
+  "save": {
+    "message": "저장",
+    "description": "저장 버튼"
+  },
+  "create": {
+    "message": "생성",
+    "description": "생성 버튼"
+  },
+
+  "nameRequired": {
+    "message": "이름은 필수입니다",
+    "description": "이름이 비어 있을 때의 오류"
+  },
+  "createFailed": {
+    "message": "생성에 실패했습니다",
+    "description": "생성 오류 메시지"
+  },
+  "switchFailed": {
+    "message": "전환에 실패했습니다",
+    "description": "전환 오류 메시지"
+  },
+  "deleteFailed": {
+    "message": "삭제에 실패했습니다",
+    "description": "삭제 오류 메시지"
+  },
+  "readFailed": {
+    "message": "읽기에 실패했습니다",
+    "description": "읽기 오류 메시지"
+  },
+
+  "autoCaptureHint": {
+    "message": "현재 로그인 상태가 자동으로 보존됩니다. 그런 다음 페이지는 cookie를 지우고 새 계정으로 로그인할 수 있도록 다시 로드됩니다.",
+    "description": "자동 cookie 캡처 힌트"
+  },
+
+  "deleteConfirmActive": {
+    "message": "현재 활성 신원 \"$NAME$\"을(를) 삭제하시겠습니까? 이 사이트의 cookie가 지워집니다.",
+    "description": "현재 신원 삭제 확인",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "신원 1"
+      }
+    }
+  },
+  "deleteConfirm": {
+    "message": "신원 \"$NAME$\"을(를) 삭제하시겠습니까?",
+    "description": "신원 삭제 확인",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "신원 1"
+      }
+    }
+  },
+  "confirm": {
+    "message": "확인",
+    "description": "확인 버튼"
+  },
+
+  "unnamed": {
+    "message": "(이름 없음)",
+    "description": "이름 없는 신원 플레이스홀더"
+  },
+  "identityNamePattern": {
+    "message": "신원 $N$",
+    "description": "자동 생성 신원 이름 패턴",
+    "placeholders": {
+      "n": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "uniquifyNamePattern": {
+    "message": "$NAME$ ($N$)",
+    "description": "고유 이름 생성 패턴",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "신원 1"
+      },
+      "n": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+
+  "dataManagement": {
+    "message": "데이터 관리",
+    "description": "데이터 관리 섹션 제목"
+  },
+  "clearAllData": {
+    "message": "모든 데이터 지우기",
+    "description": "모든 데이터 지우기 레이블"
+  },
+  "clearAllDataDesc": {
+    "message": "모든 사이트의 신원과 저장된 cookie 데이터를 삭제합니다. 이 작업은 취소할 수 없습니다.",
+    "description": "모든 데이터 지우기 설명"
+  },
+  "clear": {
+    "message": "지우기",
+    "description": "지우기 버튼"
+  },
+
+  "about": {
+    "message": "정보",
+    "description": "정보 섹션 제목"
+  },
+  "version": {
+    "message": "버전",
+    "description": "버전 레이블"
+  },
+
+  "clearAllConfirm": {
+    "message": "모든 신원 데이터를 지우시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "description": "모든 데이터 지우기 확인"
+  },
+  "clearAllSuccess": {
+    "message": "모든 데이터가 지워졌습니다.",
+    "description": "지우기 성공 메시지"
+  },
+  "clearAllError": {
+    "message": "지우기 실패: $ERROR$",
+    "description": "지우기 오류 메시지",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "알 수 없는 오류"
+      }
+    }
+  }
+}

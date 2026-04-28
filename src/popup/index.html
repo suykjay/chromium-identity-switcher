@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title data-i18n="extName">Identity Switcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-row">
+      <div>
+        <div class="title" data-i18n="extName">Identity Switcher</div>
+        <div id="site" class="site"></div>
+      </div>
+      <button id="btn-settings" class="icon" title="Settings" data-i18n-title="settings">⚙</button>
+    </div>
+  </header>
+
+  <div id="content"></div>
+
+  <template id="tpl-identity">
+    <div class="identity">
+      <span class="dot"></span>
+      <span class="name"></span>
+      <span class="active-badge" hidden data-i18n="active">Active</span>
+      <span class="spacer"></span>
+      <button class="btn-switch" data-i18n="switchToIdentity">Switch</button>
+      <button class="btn-edit icon" data-i18n-title="rename" title="Rename">✎</button>
+      <button class="btn-del icon danger" data-i18n-title="delete" title="Delete">✕</button>
+    </div>
+  </template>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>

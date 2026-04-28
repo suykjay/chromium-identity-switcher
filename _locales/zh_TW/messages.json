@@ -1,0 +1,246 @@
+{
+  "language": {
+    "message": "語言",
+    "description": "語言部分標題"
+  },
+  "selectLanguage": {
+    "message": "選擇語言",
+    "description": "選擇語言標籤"
+  },
+  "selectLanguageDesc": {
+    "message": "選擇您偏好的顯示語言。",
+    "description": "語言選擇描述"
+  },
+  "autoLanguage": {
+    "message": "自動（跟隨瀏覽器）",
+    "description": "自動語言選項"
+  },
+  "unknownError": {
+    "message": "未知錯誤",
+    "description": "未知錯誤訊息"
+  },
+  "extName": {
+    "message": "身份切換器",
+    "description": "擴展名稱"
+  },
+  "extDescription": {
+    "message": "按站點多帳號 Cookie 身份切換器",
+    "description": "擴展描述"
+  },
+  "defaultTitle": {
+    "message": "身份切換器",
+    "description": "預設按鈕標題"
+  },
+
+  "settings": {
+    "message": "設定",
+    "description": "設定按鈕提示"
+  },
+  "siteTitle": {
+    "message": "站點",
+    "description": "彈窗中的站點標籤"
+  },
+
+  "noActiveTab": {
+    "message": "沒有活動標籤頁",
+    "description": "無活動標籤頁時的錯誤"
+  },
+  "invalidUrl": {
+    "message": "無法解析目前頁面 URL",
+    "description": "URL 解析失敗時的錯誤"
+  },
+  "unsupportedProtocol": {
+    "message": "僅支援 http/https 頁面",
+    "description": "不支援的協定錯誤"
+  },
+  "permissionRequired": {
+    "message": "需要授予 $SITE$ 的存取權限才能管理 cookie。",
+    "description": "權限請求訊息",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  },
+  "grantPermission": {
+    "message": "授予權限",
+    "description": "授予權限按鈕"
+  },
+
+  "noIdentities": {
+    "message": "尚未為此站點建立任何身份。",
+    "description": "無身份時的提示"
+  },
+  "createIdentity": {
+    "message": "建立身份",
+    "description": "建立身份按鈕"
+  },
+  "newIdentity": {
+    "message": "+ 新增身份",
+    "description": "新增身份按鈕"
+  },
+
+  "switchToIdentity": {
+    "message": "切換到此身份",
+    "description": "切換按鈕提示"
+  },
+  "rename": {
+    "message": "重新命名",
+    "description": "重新命名按鈕提示"
+  },
+  "delete": {
+    "message": "刪除",
+    "description": "刪除按鈕提示"
+  },
+  "active": {
+    "message": "目前",
+    "description": "目前身份標籤"
+  },
+
+  "identityName": {
+    "message": "名稱",
+    "description": "身份名稱標籤"
+  },
+  "color": {
+    "message": "顏色",
+    "description": "顏色標籤"
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "取消按鈕"
+  },
+  "save": {
+    "message": "儲存",
+    "description": "儲存按鈕"
+  },
+  "create": {
+    "message": "建立",
+    "description": "建立按鈕"
+  },
+
+  "nameRequired": {
+    "message": "名稱不能為空",
+    "description": "名稱為空時的錯誤"
+  },
+  "createFailed": {
+    "message": "建立失敗",
+    "description": "建立錯誤訊息"
+  },
+  "switchFailed": {
+    "message": "切換失敗",
+    "description": "切換錯誤訊息"
+  },
+  "deleteFailed": {
+    "message": "刪除失敗",
+    "description": "刪除錯誤訊息"
+  },
+  "readFailed": {
+    "message": "讀取失敗",
+    "description": "讀取錯誤訊息"
+  },
+
+  "autoCaptureHint": {
+    "message": "目前登入狀態將自動保留，隨後頁面會清空 cookie 並重新載入以便登入新帳號。",
+    "description": "自動擷取目前 cookie 的提示"
+  },
+
+  "deleteConfirmActive": {
+    "message": "刪除目前啟用身份 \"$NAME$\"？該站 cookie 會被清除。",
+    "description": "確認刪除目前身份",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "身份 1"
+      }
+    }
+  },
+  "deleteConfirm": {
+    "message": "刪除身份 \"$NAME$\"？",
+    "description": "確認刪除身份",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "身份 1"
+      }
+    }
+  },
+  "confirm": {
+    "message": "確認",
+    "description": "確認按鈕"
+  },
+
+  "unnamed": {
+    "message": "（未命名）",
+    "description": "未命名身份佔位符"
+  },
+  "identityNamePattern": {
+    "message": "身份 $N$",
+    "description": "自動生成身份名稱模式",
+    "placeholders": {
+      "n": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "uniquifyNamePattern": {
+    "message": "$NAME$ ($N$)",
+    "description": "唯一名稱生成模式",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "身份 1"
+      },
+      "n": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+
+  "dataManagement": {
+    "message": "資料管理",
+    "description": "資料管理部分標題"
+  },
+  "clearAllData": {
+    "message": "清除所有資料",
+    "description": "清除所有資料標籤"
+  },
+  "clearAllDataDesc": {
+    "message": "刪除所有站點的身份和已儲存的 cookie 資料。此操作無法復原。",
+    "description": "清除所有資料描述"
+  },
+  "clear": {
+    "message": "清除",
+    "description": "清除按鈕"
+  },
+
+  "about": {
+    "message": "關於",
+    "description": "關於部分標題"
+  },
+  "version": {
+    "message": "版本",
+    "description": "版本標籤"
+  },
+
+  "clearAllConfirm": {
+    "message": "確定要清除所有身份資料嗎？此操作無法復原。",
+    "description": "確認清除所有資料"
+  },
+  "clearAllSuccess": {
+    "message": "所有資料已清除。",
+    "description": "清除成功訊息"
+  },
+  "clearAllError": {
+    "message": "清除失敗：$ERROR$",
+    "description": "清除錯誤訊息",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "未知錯誤"
+      }
+    }
+  }
+}

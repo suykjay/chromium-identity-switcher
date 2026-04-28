@@ -1,29 +1,31 @@
 {
   "manifest_version": 3,
-  "name": "Identity Switcher",
+  "name": "__MSG_extName__",
   "version": "0.1.0",
-  "description": "Per-site multi-account cookie identity switcher.",
+  "description": "__MSG_extDescription__",
+  "default_locale": "en",
   "permissions": ["cookies", "storage", "tabs", "activeTab"],
   "host_permissions": ["*://*.isw-vault.invalid/*"],
   "optional_host_permissions": ["<all_urls>"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/background/index.js",
+    "type": "module"
   },
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "Identity Switcher",
+    "default_popup": "src/popup/index.html",
+    "default_title": "__MSG_defaultTitle__",
     "default_icon": {
-      "16": "icon-16.png",
-      "32": "icon-32.png"
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
     }
   },
   "options_ui": {
-    "page": "options.html",
+    "page": "src/options/index.html",
     "open_in_tab": true
   },
   "icons": {
-    "16": "icon-16.png",
-    "48": "icon-48.png",
-    "128": "icon-128.png"
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   }
 }

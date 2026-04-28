@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title data-i18n="extName">Identity Switcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 data-i18n="extName">Identity Switcher</h1>
+    <p class="subtitle" data-i18n="settings">Settings</p>
+
+    <section>
+      <h2 data-i18n="language">Language</h2>
+      <div class="setting-item">
+        <div>
+          <div class="setting-label" data-i18n="selectLanguage">Select Language</div>
+          <div class="setting-desc" data-i18n="selectLanguageDesc">Choose your preferred display language.</div>
+        </div>
+        <select id="language-select"></select>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i18n="dataManagement">Data Management</h2>
+      <div class="setting-item">
+        <div>
+          <div class="setting-label" data-i18n="clearAllData">Clear All Data</div>
+          <div class="setting-desc" data-i18n="clearAllDataDesc">Delete all site identities and saved cookie data. This action cannot be undone.</div>
+        </div>
+        <button id="btn-clear-all" class="danger" data-i18n="clear">Clear</button>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i18n="about">About</h2>
+      <div class="setting-item">
+        <div>
+          <div class="setting-label" data-i18n="version">Version</div>
+          <div class="setting-desc" id="version"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

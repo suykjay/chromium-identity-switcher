@@ -1,0 +1,246 @@
+{
+  "language": {
+    "message": "语言",
+    "description": "语言部分标题"
+  },
+  "selectLanguage": {
+    "message": "选择语言",
+    "description": "选择语言标签"
+  },
+  "selectLanguageDesc": {
+    "message": "选择您偏好的显示语言。",
+    "description": "语言选择描述"
+  },
+  "autoLanguage": {
+    "message": "自动（跟随浏览器）",
+    "description": "自动语言选项"
+  },
+  "unknownError": {
+    "message": "未知错误",
+    "description": "未知错误消息"
+  },
+  "extName": {
+    "message": "身份切换器",
+    "description": "扩展名称"
+  },
+  "extDescription": {
+    "message": "按站点多账号 Cookie 身份切换器",
+    "description": "扩展描述"
+  },
+  "defaultTitle": {
+    "message": "身份切换器",
+    "description": "默认按钮标题"
+  },
+
+  "settings": {
+    "message": "设置",
+    "description": "设置按钮提示"
+  },
+  "siteTitle": {
+    "message": "站点",
+    "description": "弹窗中的站点标签"
+  },
+
+  "noActiveTab": {
+    "message": "没有活动标签页",
+    "description": "无活动标签页时的错误"
+  },
+  "invalidUrl": {
+    "message": "无法解析当前页面 URL",
+    "description": "URL 解析失败时的错误"
+  },
+  "unsupportedProtocol": {
+    "message": "仅支持 http/https 页面",
+    "description": "不支持的协议错误"
+  },
+  "permissionRequired": {
+    "message": "需要授予 $SITE$ 的访问权限才能管理 cookie。",
+    "description": "权限请求消息",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  },
+  "grantPermission": {
+    "message": "授予权限",
+    "description": "授予权限按钮"
+  },
+
+  "noIdentities": {
+    "message": "尚未为此站点创建任何身份。",
+    "description": "无身份时的提示"
+  },
+  "createIdentity": {
+    "message": "创建身份",
+    "description": "创建身份按钮"
+  },
+  "newIdentity": {
+    "message": "+ 新建身份",
+    "description": "新建身份按钮"
+  },
+
+  "switchToIdentity": {
+    "message": "切换到此身份",
+    "description": "切换按钮提示"
+  },
+  "rename": {
+    "message": "重命名",
+    "description": "重命名按钮提示"
+  },
+  "delete": {
+    "message": "删除",
+    "description": "删除按钮提示"
+  },
+  "active": {
+    "message": "当前",
+    "description": "当前身份标签"
+  },
+
+  "identityName": {
+    "message": "名称",
+    "description": "身份名称标签"
+  },
+  "color": {
+    "message": "颜色",
+    "description": "颜色标签"
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "取消按钮"
+  },
+  "save": {
+    "message": "保存",
+    "description": "保存按钮"
+  },
+  "create": {
+    "message": "创建",
+    "description": "创建按钮"
+  },
+
+  "nameRequired": {
+    "message": "名称不能为空",
+    "description": "名称为空时的错误"
+  },
+  "createFailed": {
+    "message": "创建失败",
+    "description": "创建错误消息"
+  },
+  "switchFailed": {
+    "message": "切换失败",
+    "description": "切换错误消息"
+  },
+  "deleteFailed": {
+    "message": "删除失败",
+    "description": "删除错误消息"
+  },
+  "readFailed": {
+    "message": "读取失败",
+    "description": "读取错误消息"
+  },
+
+  "autoCaptureHint": {
+    "message": "当前登录状态将自动保留，随后页面会清空 cookie 并重载以便登录新账号。",
+    "description": "自动捕获当前 cookie 的提示"
+  },
+
+  "deleteConfirmActive": {
+    "message": "删除当前激活身份 \"$NAME$\"？该站 cookie 会被清空。",
+    "description": "确认删除当前身份",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "身份 1"
+      }
+    }
+  },
+  "deleteConfirm": {
+    "message": "删除身份 \"$NAME$\"？",
+    "description": "确认删除身份",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "身份 1"
+      }
+    }
+  },
+  "confirm": {
+    "message": "确认",
+    "description": "确认按钮"
+  },
+
+  "unnamed": {
+    "message": "（未命名）",
+    "description": "未命名身份占位符"
+  },
+  "identityNamePattern": {
+    "message": "身份 $N$",
+    "description": "自动生成身份名称模式",
+    "placeholders": {
+      "n": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "uniquifyNamePattern": {
+    "message": "$NAME$ ($N$)",
+    "description": "唯一名称生成模式",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "身份 1"
+      },
+      "n": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+
+  "dataManagement": {
+    "message": "数据管理",
+    "description": "数据管理部分标题"
+  },
+  "clearAllData": {
+    "message": "清除所有数据",
+    "description": "清除所有数据标签"
+  },
+  "clearAllDataDesc": {
+    "message": "删除所有站点的身份和已保存的 cookie 数据。此操作不可撤销。",
+    "description": "清除所有数据描述"
+  },
+  "clear": {
+    "message": "清除",
+    "description": "清除按钮"
+  },
+
+  "about": {
+    "message": "关于",
+    "description": "关于部分标题"
+  },
+  "version": {
+    "message": "版本",
+    "description": "版本标签"
+  },
+
+  "clearAllConfirm": {
+    "message": "确定要清除所有身份数据吗？此操作不可撤销。",
+    "description": "确认清除所有数据"
+  },
+  "clearAllSuccess": {
+    "message": "所有数据已清除。",
+    "description": "清除成功消息"
+  },
+  "clearAllError": {
+    "message": "清除失败：$ERROR$",
+    "description": "清除错误消息",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "未知错误"
+      }
+    }
+  }
+}

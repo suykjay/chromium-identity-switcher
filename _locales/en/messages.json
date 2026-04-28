@@ -1,0 +1,246 @@
+{
+  "language": {
+    "message": "Language",
+    "description": "Language section title"
+  },
+  "selectLanguage": {
+    "message": "Select Language",
+    "description": "Select language label"
+  },
+  "selectLanguageDesc": {
+    "message": "Choose your preferred display language.",
+    "description": "Language selection description"
+  },
+  "autoLanguage": {
+    "message": "Auto (Browser Default)",
+    "description": "Auto language option"
+  },
+  "unknownError": {
+    "message": "Unknown error",
+    "description": "Unknown error message"
+  },
+  "extName": {
+    "message": "Identity Switcher",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Per-site multi-account cookie identity switcher",
+    "description": "Extension description"
+  },
+  "defaultTitle": {
+    "message": "Identity Switcher",
+    "description": "Default action button title"
+  },
+
+  "settings": {
+    "message": "Settings",
+    "description": "Settings button tooltip"
+  },
+  "siteTitle": {
+    "message": "Site",
+    "description": "Site label in popup"
+  },
+
+  "noActiveTab": {
+    "message": "No active tab",
+    "description": "Error when no active tab"
+  },
+  "invalidUrl": {
+    "message": "Cannot parse current page URL",
+    "description": "Error when URL cannot be parsed"
+  },
+  "unsupportedProtocol": {
+    "message": "Only http/https pages are supported",
+    "description": "Error for unsupported protocols"
+  },
+  "permissionRequired": {
+    "message": "Permission required for $SITE$ to manage cookies.",
+    "description": "Permission request message",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  },
+  "grantPermission": {
+    "message": "Grant Permission",
+    "description": "Grant permission button"
+  },
+
+  "noIdentities": {
+    "message": "No identities created for this site yet.",
+    "description": "Hint when no identities exist"
+  },
+  "createIdentity": {
+    "message": "Create Identity",
+    "description": "Create identity button"
+  },
+  "newIdentity": {
+    "message": "+ New Identity",
+    "description": "New identity button"
+  },
+
+  "switchToIdentity": {
+    "message": "Switch to this identity",
+    "description": "Switch button tooltip"
+  },
+  "rename": {
+    "message": "Rename",
+    "description": "Rename button tooltip"
+  },
+  "delete": {
+    "message": "Delete",
+    "description": "Delete button tooltip"
+  },
+  "active": {
+    "message": "Active",
+    "description": "Active badge text"
+  },
+
+  "identityName": {
+    "message": "Name",
+    "description": "Identity name label"
+  },
+  "color": {
+    "message": "Color",
+    "description": "Color label"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Cancel button"
+  },
+  "save": {
+    "message": "Save",
+    "description": "Save button"
+  },
+  "create": {
+    "message": "Create",
+    "description": "Create button"
+  },
+
+  "nameRequired": {
+    "message": "Name is required",
+    "description": "Error when name is empty"
+  },
+  "createFailed": {
+    "message": "Failed to create identity",
+    "description": "Create error message"
+  },
+  "switchFailed": {
+    "message": "Failed to switch identity",
+    "description": "Switch error message"
+  },
+  "deleteFailed": {
+    "message": "Failed to delete identity",
+    "description": "Delete error message"
+  },
+  "readFailed": {
+    "message": "Failed to read data",
+    "description": "Read error message"
+  },
+
+  "autoCaptureHint": {
+    "message": "Current login will be automatically preserved. The page will then clear cookies and reload for new account login.",
+    "description": "Hint about auto-capturing current cookies"
+  },
+
+  "deleteConfirmActive": {
+    "message": "Delete active identity \"$NAME$\"? Cookies for this site will be cleared.",
+    "description": "Confirm deleting active identity",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Identity 1"
+      }
+    }
+  },
+  "deleteConfirm": {
+    "message": "Delete identity \"$NAME$\"?",
+    "description": "Confirm deleting identity",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Identity 1"
+      }
+    }
+  },
+  "confirm": {
+    "message": "Confirm",
+    "description": "Confirm button"
+  },
+
+  "unnamed": {
+    "message": "(Unnamed)",
+    "description": "Unnamed identity placeholder"
+  },
+  "identityNamePattern": {
+    "message": "Identity $N$",
+    "description": "Auto-generated identity name pattern",
+    "placeholders": {
+      "n": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "uniquifyNamePattern": {
+    "message": "$NAME$ ($N$)",
+    "description": "Pattern for making unique names",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Identity 1"
+      },
+      "n": {
+        "content": "$2",
+        "example": "2"
+      }
+    }
+  },
+
+  "dataManagement": {
+    "message": "Data Management",
+    "description": "Data management section title"
+  },
+  "clearAllData": {
+    "message": "Clear All Data",
+    "description": "Clear all data label"
+  },
+  "clearAllDataDesc": {
+    "message": "Delete all site identities and saved cookie data. This action cannot be undone.",
+    "description": "Clear all data description"
+  },
+  "clear": {
+    "message": "Clear",
+    "description": "Clear button"
+  },
+
+  "about": {
+    "message": "About",
+    "description": "About section title"
+  },
+  "version": {
+    "message": "Version",
+    "description": "Version label"
+  },
+
+  "clearAllConfirm": {
+    "message": "Are you sure you want to clear all identity data? This action cannot be undone.",
+    "description": "Confirm clearing all data"
+  },
+  "clearAllSuccess": {
+    "message": "All data has been cleared.",
+    "description": "Success message after clearing"
+  },
+  "clearAllError": {
+    "message": "Clear failed: $ERROR$",
+    "description": "Error clearing data",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Unknown error"
+      }
+    }
+  }
+}
